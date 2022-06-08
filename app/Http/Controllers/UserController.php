@@ -20,4 +20,13 @@ class UserController extends Controller{
             "status" => "Success",
         ], 200);
     }
+
+    public function getAllUsers(){
+            return response()->json([
+                "status" => "Success",
+                "users" => User::all(),
+            ], 200);
+    }
+
+
 }
