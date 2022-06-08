@@ -22,11 +22,28 @@ class UserController extends Controller{
     }
 
     public function getAllUsers(){
-            return response()->json([
-                "status" => "Success",
-                "users" => User::all(),
-            ], 200);
+        return response()->json([
+            "status" => "Success",
+            "users" => User::all(),
+        ], 200);
     }
 
-
+    public function signIn (Request $request){
+        $user=new User;
+        $user=User::where('username','=',$request->username)->where('password','=',$request->password)->get();
+        $userCount=$user->count();
+        $userid=$user[0]->id;
+        $username=$user[0]->username;
+        $is_admin=$user[0]->is_admin;
+    
+        if ($userCount=1){
+            return response()->json([
+                "status" => "Success",
+                "userid" => $userid,
+                "username" => $username,
+                "usertype" => $is_admin,
+            ], 200);
+            
+        }
+    }
 }

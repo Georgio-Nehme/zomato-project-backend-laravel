@@ -9,16 +9,23 @@ class RestaurantController extends Controller
 {
     public function addRestaurant(Request $request){
 
-        // $restaurant = new Restaurant;
-        // $restaurant->restaurant_name = $request->restaurant_name;
-        // $restaurant->phone= $request->phone;
-        // $restaurant->picture= $request->picture;
-        // $restaurant->city= $request->city;
-        // $restaurant->save();
+        $restaurant = new Restaurant;
+        $restaurant->restaurant_name = $request->restaurant_name;
+        $restaurant->phone = $request->phone;
+        $restaurant->picture= $request->picture;
+        $restaurant->city= $request->city;
+        $restaurant->save();
 
         return response()->json([
             "status" => "success",
         ], 200);
     }
-}
 
+    public function getAllRestaurants(){
+        return response()->json([
+            "status" => "Success",
+            "restaurants" => Restaurant::all(),
+        ], 200);
+    }
+
+}

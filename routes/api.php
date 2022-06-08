@@ -24,5 +24,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('/signUp', [UserController::class, 'signUp'])->name("sign-up");
 Route::post('/addRestaurant', [RestaurantController::class, 'addRestaurant'])->name("add-restaurant");
+Route::post('/signIn', [UserController::class, 'signIn'])->name("signIn");
 
 Route::get('/all_users', [UserController::class, 'getAllUsers'])->name("all-users");
+Route::get('/all_restaurants', [RestaurantController::class, 'getAllRestaurants'])->name("all-restaurants");
